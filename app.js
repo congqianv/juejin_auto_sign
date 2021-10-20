@@ -2,7 +2,8 @@ const got = require('got')
 
 const { cookie, aid, uuid, _signature, PUSH_PLUS_TOKEN } = require('./config')
 
-const BASEURL = 'https://api.juejin.cn/growth_api/v1/check_in' // 掘金签到接口
+const BASEURL = 'https://api.juejin.cn/growth_api/v1/check_in' // 掘金签到api
+const PUSH_URL = 'http://www.pushplus.plus/send' // pushplus 推送api
 
 const URL = `${BASEURL}?aid=${aid}&uuid=${uuid}&_signature=${_signature}`
 
@@ -27,8 +28,6 @@ async function signIn () {
 }
 
 // push
-const PUSH_URL = 'http://www.pushplus.plus/send'
-
 async function handlePush (desp) {
   const body = {
     token: `${PUSH_PLUS_TOKEN}`,
