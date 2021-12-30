@@ -6,6 +6,7 @@ const BASEURL = 'https://api.juejin.cn/growth_api/v1/check_in' // 掘金签到ap
 const PUSH_URL = 'http://www.pushplus.plus/send' // pushplus 推送api
 
 const URL = `${BASEURL}?aid=${aid}&uuid=${uuid}&_signature=${_signature}`
+const DRAW_URL = `https://api.juejin.cn/growth_api/v1/lottery/draw?aid=${aid}&uuid=${uuid}&_signature=${_signature}`
 
 const HEADERS = {
   cookie,
@@ -24,7 +25,22 @@ async function signIn () {
     }
   })
   console.log(res.body)
+  draw()
+  if (!PUSH_PLUS_TOKEN) return
   handlePush(res.body)
+}
+
+async function draw () {
+  const res = await got.post(DRAW_URL, {
+    hooks: {
+      beforeRequest: [
+        options => {
+          Object.assign(options.headers, HEADERS)
+        }
+      ]
+    }
+  })
+  console.log(res.body)
 }
 
 // push
