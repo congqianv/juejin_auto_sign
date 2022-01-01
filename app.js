@@ -1,6 +1,6 @@
 const got = require('got')
 
-const { cookie, aid, uuid, _signature, PUSH_PLUS_TOKEN, DING_TALK_TOKEN } = require('./config')
+const { cookie, aid, uuid, _signature, PUSH_PLUS_TOKEN, DING_TALK_TOKEN, uid, username } = require('./config')
 
 const BASEURL = 'https://api.juejin.cn/growth_api/v1/check_in' // 掘金签到api
 const PUSH_URL = 'http://www.pushplus.plus/send' // pushplus 推送api
