@@ -3,5 +3,6 @@ module.exports = {
   PUSH_PLUS_TOKEN: '',
   aid: '',
   uuid: '',
-  _signature: ''
+  _signature: '',
+  DING_TALK_TOKEN: '',
 }
